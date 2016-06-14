@@ -9,6 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <StackPanel Orientation="Vertical" >
+            <TextBlock Text="Traffic Tracking" Style="{StaticResource HeaderTextBlockStyle}"/>
+            <Button x:Name="GoToCurrentSituationPage" Content="Текущая ситуация" Click="GoToCurrentSituationPage_Click"/>
+            <Button x:Name="GoToStatisticsPage" Content="Статистика"  Click="GoToStatisticsPage_Click"/>
+            <Button x:Name="GoToTrackingPage" Content="Трекинг"  Click="GoToTrackingPage_Click"/>
+            <Button x:Name="GoToSettingsPage" Content="Настройки"  Click="GoToSettingsPage_Click"/>
+        </StackPanel>
     </Grid>
 </Page>

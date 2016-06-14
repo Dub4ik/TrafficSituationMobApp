@@ -1,0 +1,43 @@
+﻿<Page
+    x:Class="TrafficSituationMobApp.TrackingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TrafficSituationMobApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" >
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="Трекинг"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Широта" Style="{StaticResource BaseTextBlockStyle}"/>
+                <TextBlock Text="Долгота" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="1"/>
+                <TextBlock Text="Скорость" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="2"/>
+                <TextBlock Text="Адрес" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="3"/>
+
+                <TextBlock x:Name="LatitudeTextBlock" Text="нет данных" Style="{StaticResource BaseTextBlockStyle}" Grid.Column="1"/>
+                <TextBlock x:Name="LongtitudeTextBlock" Text="нет данных" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="1" Grid.Column="1"/>
+                <TextBlock x:Name="SpeedTextBlock" Text="нет данных" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="2" Grid.Column="1"/>
+                <TextBlock x:Name="AddressTextBlock" Text="нет данных" Style="{StaticResource BaseTextBlockStyle}" Grid.Row="3" Grid.Column="1"/>
+
+                <Button x:Name="StartTrackingButton" Grid.Row="4" Content="Начать трекинг" Height="auto" VerticalAlignment="Center" Click="StartTrackingButton_Click"/>
+                <Button x:Name="StopTrackingButton" Grid.Row="4" Grid.Column="1" Content="Прекратить трекинг" Height="auto" VerticalAlignment="Center" Click="StopTrackingButton_Click"/>
+            </Grid>
+            
+        </StackPanel>
+    </Grid>
+</Page>

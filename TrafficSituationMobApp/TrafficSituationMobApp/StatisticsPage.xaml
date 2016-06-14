@@ -1,0 +1,72 @@
+﻿<Page
+    x:Class="TrafficSituationMobApp.StatisticsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TrafficSituationMobApp"
+    xmlns:viewmodels="using:TrafficSituationMobApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:dt="using:WinRTXamlToolkit.Controls.DataVisualization.Charting"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <viewmodels:StatisticsViewModel x:Key="ViewModel"/>
+    </Page.Resources>
+    <ScrollViewer DataContext="{StaticResource ViewModel}">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Статистика" Style="{StaticResource HeaderTextBlockStyle}" />
+
+                <TextBox PlaceholderText="Страна" Text="{Binding Country, Mode=TwoWay}" Margin="5,0,5,0"/>
+                <TextBox PlaceholderText="Город" Text="{Binding City, Mode=TwoWay}" Margin="5,3,5,0"/>
+                <TextBox PlaceholderText="Улица" Text="{Binding Street, Mode=TwoWay}" Margin="5,3,5,0"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <RadioButton IsChecked="{Binding IsStatisticsPerCurrentTimeChecked, Mode=TwoWay}"
+                                 Content="Точное время"
+                                 VerticalAlignment="Center"/>
+                    <RadioButton Grid.Row="1"
+                                 IsChecked="{Binding IsStatisticsPerHourChecked, Mode=TwoWay}"
+                                 Content="Статистика за час"
+                                 VerticalAlignment="Center"/>
+                    <StackPanel Grid.Column="1"
+                                Grid.RowSpan="2"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TimePicker Time="{Binding CurrentTime, Mode=TwoWay}"/>
+                        <DatePicker Date="{Binding CurrentDate, Mode=TwoWay}"/>
+                    </StackPanel>
+
+                </Grid>
+                
+               
+                
+                <Button Content="Поиск" Command="{Binding GetTrafficDataButtonClick}"/>
+            </StackPanel>
+            <dt:Chart  x:Name="MainChart" Title="График загруженности" Height="300">
+                <dt:Chart.Series>
+                    <dt:ColumnSeries x:Name="Columns" Title="Загруженность"
+                                 ItemsSource="{Binding TrafficDataCollection}"
+                                 DependentValueBinding="{Binding TrafficLevel}"
+                                 IndependentValueBinding="{Binding Date}"
+                                 IsSelectionEnabled="True"
+                                 ManipulationMode="All"
+                                 IsTextScaleFactorEnabled="True"
+                                 
+                              />
+                </dt:Chart.Series>
+            </dt:Chart>
+        </StackPanel>
+       
+    </ScrollViewer>
+    
+</Page>

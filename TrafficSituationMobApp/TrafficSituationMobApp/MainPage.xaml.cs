@@ -44,5 +44,29 @@ namespace TrafficSituationMobApp
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+        }
+
+        private void GoToCurrentSituationPage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(CurrentSituationPage));
+        }
+
+        private void GoToSettingsPage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(SettingsPage));
+        }
+
+        private void GoToTrackingPage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TrackingPage));
+        }
+
+        private void GoToStatisticsPage_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(StatisticsPage));
+        }
     }
 }
